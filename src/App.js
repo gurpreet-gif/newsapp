@@ -1,18 +1,17 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import NewsWrapper from './components/NewsWrapper'; // ✅ Correct import
+import NewsWrapper from './components/NewsWrapper';
 
 export default function App() {
   return (
-    <Router>
+    <BrowserRouter basename="/V-react-code-newsapp">
       <Navbar />
       <Routes>
-        <Route path="/" element={<NewsWrapper category="technology" />} />
+        <Route path="/" element={<Navigate to="/newsapp" />} />
+        <Route path="/newsapp" element={<NewsWrapper category="general" />} />
         <Route path="/category/:categoryName" element={<NewsWrapper />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
-
-

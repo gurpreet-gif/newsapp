@@ -13,12 +13,12 @@ export default class News extends Component {
       category: props.category || 'technology',
       sources: [],
     };
-    document.title = `${this.capitalize(this.state.category)} |NewsApp`;
+    document.title = `${this.capitalize(this.state.category)} -NewsApp`;
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.category !== this.props.category) {
-      document.title = `${this.capitalize(this.props.category)} |NewsApp`;
+      document.title = `${this.capitalize(this.props.category)} -NewsApp`;
       this.setState(
         { category: this.props.category },
         () => {
